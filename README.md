@@ -50,6 +50,21 @@ Alguns Testes Unitários foram criados e inseridos.
 Os logs de execução aparecem enquanto o mesmo é executado informando a execução das tarefas selecionadas. 
 
 
+# JSON DE USO PARA INSERÇÃO:
+
+````JSON
+{
+  "clienteNome": "Karol Silva",
+  "itensPedido": [
+    {
+      "nomeProduto": "Notebook Lenovo",
+      "quantidade": 1,
+      "valorUnitario": 2750.00
+    }
+  ]
+}
+````
+
 
 
 Por
