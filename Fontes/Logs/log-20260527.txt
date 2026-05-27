@@ -1,0 +1,91 @@
+2026-05-27 10:19:54.771 -04:00 [INF] Now listening on: https://localhost:7299
+2026-05-27 10:19:54.818 -04:00 [INF] Now listening on: http://localhost:5042
+2026-05-27 10:19:54.913 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-27 10:19:54.916 -04:00 [INF] Hosting environment: Development
+2026-05-27 10:19:54.917 -04:00 [INF] Content root path: C:\PedidoApi
+2026-05-27 10:19:56.209 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7299/swagger/index.html - null null
+2026-05-27 10:19:56.598 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7299/swagger/index.html - 200 null text/html;charset=utf-8 398.5671ms
+2026-05-27 10:19:56.666 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7299/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-27 10:19:56.666 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7299/_vs/browserLink - null null
+2026-05-27 10:19:56.679 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7299/_framework/aspnetcore-browser-refresh.js - 200 14923 application/javascript; charset=utf-8 14.3364ms
+2026-05-27 10:19:56.831 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7299/_vs/browserLink - 200 null text/javascript; charset=UTF-8 165.0937ms
+2026-05-27 10:19:56.890 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7299/swagger/v1/swagger.json - null null
+2026-05-27 10:19:56.914 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7299/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.0944ms
+2026-05-27 10:20:28.506 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7299/api/Pedidos?page=1&pageSize=10&status=Pago - null null
+2026-05-27 10:20:28.528 -04:00 [INF] Executing endpoint 'ProductApi.Controllers.PedidosController.GetAll (PedidoApi)'
+2026-05-27 10:20:28.567 -04:00 [INF] Route matched with {action = "GetAll", controller = "Pedidos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(Int32, Int32, System.String, System.Nullable`1[PedioApi.models.StatusPedido]) on controller ProductApi.Controllers.PedidosController (PedidoApi).
+2026-05-27 10:20:32.762 -04:00 [INF] Executed DbCommand (163ms) [Parameters=[@__status_Value_0='?' (Size = 10)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Pedido] AS [p]
+WHERE [p].[Status] = @__status_Value_0
+2026-05-27 10:20:32.955 -04:00 [INF] Executed DbCommand (42ms) [Parameters=[@__status_Value_0='?' (Size = 10), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ClienteNome], [t].[DataCriacao], [t].[ValorTotal], [t].[Status], [i].[Id], [i].[NomeProduto], [i].[Quantidade], [i].[ValorUnitario]
+FROM (
+    SELECT [p].[Id], [p].[ClienteNome], [p].[DataCriacao], [p].[ValorTotal], [p].[Status]
+    FROM [Pedido] AS [p]
+    WHERE [p].[Status] = @__status_Value_0
+    ORDER BY [p].[Id] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [ItemPedido] AS [i] ON [t].[Id] = [i].[PedidoId]
+ORDER BY [t].[Id] DESC
+2026-05-27 10:20:32.973 -04:00 [INF] Criando pedido para cliente: {Cliente}
+2026-05-27 10:20:32.986 -04:00 [INF] Executing OkObjectResult, writing value of type 'PedioApi.DTOs.PaginatedResponse`1[[PedioApi.DTOs.PedidoDto, PedidoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-27 10:20:33.025 -04:00 [INF] Executed action ProductApi.Controllers.PedidosController.GetAll (PedidoApi) in 4449.1842ms
+2026-05-27 10:20:33.028 -04:00 [INF] Executed endpoint 'ProductApi.Controllers.PedidosController.GetAll (PedidoApi)'
+2026-05-27 10:20:33.038 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7299/api/Pedidos?page=1&pageSize=10&status=Pago - 200 null application/json; charset=utf-8 4532.6206ms
+2026-05-27 10:20:38.670 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7299/api/Pedidos?page=1&pageSize=10 - null null
+2026-05-27 10:20:38.677 -04:00 [INF] Executing endpoint 'ProductApi.Controllers.PedidosController.GetAll (PedidoApi)'
+2026-05-27 10:20:38.679 -04:00 [INF] Route matched with {action = "GetAll", controller = "Pedidos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(Int32, Int32, System.String, System.Nullable`1[PedioApi.models.StatusPedido]) on controller ProductApi.Controllers.PedidosController (PedidoApi).
+2026-05-27 10:20:38.759 -04:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Pedido] AS [p]
+2026-05-27 10:20:38.784 -04:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ClienteNome], [t].[DataCriacao], [t].[ValorTotal], [t].[Status], [i].[Id], [i].[NomeProduto], [i].[Quantidade], [i].[ValorUnitario]
+FROM (
+    SELECT [p].[Id], [p].[ClienteNome], [p].[DataCriacao], [p].[ValorTotal], [p].[Status]
+    FROM [Pedido] AS [p]
+    ORDER BY [p].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [ItemPedido] AS [i] ON [t].[Id] = [i].[PedidoId]
+ORDER BY [t].[Id] DESC
+2026-05-27 10:20:38.789 -04:00 [INF] Criando pedido para cliente: {Cliente}
+2026-05-27 10:20:38.791 -04:00 [INF] Executing OkObjectResult, writing value of type 'PedioApi.DTOs.PaginatedResponse`1[[PedioApi.DTOs.PedidoDto, PedidoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-27 10:20:38.793 -04:00 [INF] Executed action ProductApi.Controllers.PedidosController.GetAll (PedidoApi) in 111.5003ms
+2026-05-27 10:20:38.796 -04:00 [INF] Executed endpoint 'ProductApi.Controllers.PedidosController.GetAll (PedidoApi)'
+2026-05-27 10:20:38.797 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7299/api/Pedidos?page=1&pageSize=10 - 200 null application/json; charset=utf-8 127.6221ms
+2026-05-27 10:42:42.129 -04:00 [INF] Now listening on: https://localhost:7299
+2026-05-27 10:42:42.157 -04:00 [INF] Now listening on: http://localhost:5042
+2026-05-27 10:42:42.198 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-27 10:42:42.200 -04:00 [INF] Hosting environment: Development
+2026-05-27 10:42:42.202 -04:00 [INF] Content root path: C:\PedidoApi\Fontes
+2026-05-27 10:42:43.469 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7299/swagger/index.html - null null
+2026-05-27 10:42:43.881 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7299/swagger/index.html - 200 null text/html;charset=utf-8 419.4753ms
+2026-05-27 10:42:43.927 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7299/_vs/browserLink - null null
+2026-05-27 10:42:43.927 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7299/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-27 10:42:43.953 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7299/_framework/aspnetcore-browser-refresh.js - 200 14923 application/javascript; charset=utf-8 27.3228ms
+2026-05-27 10:42:44.197 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7299/_vs/browserLink - 200 null text/javascript; charset=UTF-8 271.455ms
+2026-05-27 10:42:44.229 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7299/swagger/v1/swagger.json - null null
+2026-05-27 10:42:44.257 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7299/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 27.8435ms
+2026-05-27 10:42:55.267 -04:00 [INF] Request starting HTTP/2 GET https://localhost:7299/api/Pedidos?page=1&pageSize=10 - null null
+2026-05-27 10:42:55.279 -04:00 [INF] Executing endpoint 'ProductApi.Controllers.PedidosController.GetAll (PedidoApi)'
+2026-05-27 10:42:55.312 -04:00 [INF] Route matched with {action = "GetAll", controller = "Pedidos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(Int32, Int32, System.String, System.Nullable`1[PedioApi.models.StatusPedido]) on controller ProductApi.Controllers.PedidosController (PedidoApi).
+2026-05-27 10:42:58.949 -04:00 [INF] Executed DbCommand (139ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Pedido] AS [p]
+2026-05-27 10:42:59.220 -04:00 [INF] Executed DbCommand (124ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[ClienteNome], [t].[DataCriacao], [t].[ValorTotal], [t].[Status], [i].[Id], [i].[NomeProduto], [i].[Quantidade], [i].[ValorUnitario]
+FROM (
+    SELECT [p].[Id], [p].[ClienteNome], [p].[DataCriacao], [p].[ValorTotal], [p].[Status]
+    FROM [Pedido] AS [p]
+    ORDER BY [p].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [ItemPedido] AS [i] ON [t].[Id] = [i].[PedidoId]
+ORDER BY [t].[Id] DESC
+2026-05-27 10:42:59.240 -04:00 [INF] Criando pedido para cliente: {Cliente}
+2026-05-27 10:42:59.252 -04:00 [INF] Executing OkObjectResult, writing value of type 'PedioApi.DTOs.PaginatedResponse`1[[PedioApi.DTOs.PedidoDto, PedidoApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-27 10:42:59.284 -04:00 [INF] Executed action ProductApi.Controllers.PedidosController.GetAll (PedidoApi) in 3964.1646ms
+2026-05-27 10:42:59.287 -04:00 [INF] Executed endpoint 'ProductApi.Controllers.PedidosController.GetAll (PedidoApi)'
+2026-05-27 10:42:59.299 -04:00 [INF] Request finished HTTP/2 GET https://localhost:7299/api/Pedidos?page=1&pageSize=10 - 200 null application/json; charset=utf-8 4032.1039ms
